@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script type="text/javascript" >
+        function animate()
+        {
+           var val= window.getComputedStyle(document.getElementById("text1")).fontSize;
+           var fontSize=parseInt(val);
+           var state="growing";
+            var timer=setInterval(textanimate,100);
+
+            function textanimate()
+            {
+                if(state=="growing")
+                {
+                    fontSize++;
+                    document.getElementById("text1").innerHTML="Text-growing";
+                    document.getElementById("text1").style.color="red";
+                    document.getElementById("text1").style.fontSize=fontSize+"pt"
+                }
+                if (state=="shrinking")
+                {
+                    fontSize--;
+                    document.getElementById("text1").innerHTML="text-shrinking";
+                    document.getElementById("text1").style.color="blue";
+                    document.getElementById("text1").style.fontSize=fontSize+"pt";
+                }
+                if(fontSize==50)
+                {
+                    state="shrinking";
+                }
+                if(fontSize==5){
+                   clearInterval(timer);
+                }
+            }
+
+        }
+    </script>
+</head>
+<body onload="animate()">
+    <p style="text-align: center;" id="text1">Text</p>
+   
+</body>
+</html>
